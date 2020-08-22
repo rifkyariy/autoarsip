@@ -36,11 +36,12 @@ const setupSignedfile = function(){
     $('.sign-button-container').hide();
     $("#preview-signature").show();
 
+    $(".verify-file").show();
+    $(".verify-file").attr("href",'verify.html?filename='+filename );
     $(".download-signature").show();
     $(".download-signature").attr("href",baseUrl+filename+'/generate/signature' );
     $(".download-signature").prop('download', true);
 }
-
 
 $(document).ready(function(x){
     $.ajax({

@@ -23,13 +23,25 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
     <style>
-      .loading-container{
-        margin-top: 25px;
-      }
+        .documents {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .document {
+            flex: 1 0 21%; /* explanation below */
+            margin: 5px;
+            max-width: 21%;
+        }
 
-      .btn-d{
-        display: none;
-      }
+        .document a{
+            color: #f5f5f5;
+        }
+
+        .document img{
+            object-fit: cover;
+            max-height: 250px;
+        }
     </style>
   </head>
   <body>
@@ -379,49 +391,40 @@
           <div class="content-wrapper"> 
 
             <div class="row">
-              <div class="col-md-6 grid-margin stretch-card">
-                <!-- <div class="card">
-                  <div class="card-body">
-                    
-                  </div>
-                </div> -->
-                <div class="card">
-                  <div class="card-header">
-                    <h4 class="card-title">Arsip <span id="fileName"></span></h4>
-                  </div>
-                  <div class="card-body original">
-                    <div class="loading-container original text-center">
-                      <p>Loading...</p>
-                      <p>Getting data from server</p>
+              <div class="col-md-4 grid-margin stretch-card">
+                  <div class="card text-white">
+                    <div class="card-body">
+                      <h4 class="card-title">Verifikasi Arsip</h4>
+                      <div class="mt-4" id="drop-area">
+                        <form class="my-form text-center"> 
+                          <span class="mt-4 mdi mdi-upload  icon-item"></span>
+                          <p>Upload Arsip Anda</p>
+                          <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                          <progress style="display:none" id="progress-bar" max=100 value=0></progress>
+                        </form>
+                        <form id="uploadPdfForm">
+                          <!-- <input type="hidden" name="document_type" value="invoice"/> -->
+                        </form>
+                      </div>
                     </div>
-                    <iframe style="width: 100%;min-height: 500px; display: none;" id="preview-original" frameborder="0"></iframe>
+                  </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Preview Arsip</h4>
+                    <div class="my-2 file-verified badge badge-outline-success" style="display: none;">
+                      <span class="mdi mdi-marker-check "></span>
+                      Terverifikasi
+                    </div>
+                    <div class="my-2 file-unverified badge badge-outline-danger" style="display: none;">
+                      <span class=" mdi mdi-close-box-outline  "></span>
+                      Tidak Terverifikasi
+                    </div>
+                    <iframe id="preview-pdf" frameborder="0"></iframe>
                   </div>
                 </div>
               </div>
-              
-
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title signature-title"></h4>
-                </div>
-                <div class="card-body">
-                  <div class="sign-button-container text-center d-none">
-                    <div class="btn btn-primary generate-signature"><i class="mdi mdi-key"></i> Generate Signature</div>
-                  </div>
-                  
-                  <div class="loading-container signature text-center d-none">
-                    <p>Loading...</p>
-                    <p class="loading-message"></p>
-                  </div>
-                  <iframe style="width: 100%;min-height: 500px; display: none;" id="preview-signature" frameborder="0"></iframe>
-                </div>
-                <div class="card-footer" style="text-align: right; padding: 15px;">
-                  <a target="_blank" class="btn-d btn btn-primary download-signature"><i class="mdi mdi-download"></i> Download File</a>
-                  <a target="_blank" class="btn-d btn btn-success verify-file"><i class="mdi mdi-file-check"></i> Verify File</a>
-                </div>
-              </div>
-            </div>
             </div>
           </div>
           
@@ -470,8 +473,9 @@
     <script src="../../assets/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="dokumen.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
+    <script src="https://scandel.github.io/pdfThumbnails/pdfThumbnails.js"></script>
     <!-- End custom js for this page -->
-    
+    <script src="verify.js"></script>
   </body>
 </html>
