@@ -1,0 +1,126 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Auto Arsip</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../../assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="../../assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/dropzone/dropzone.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+      .full-bg {
+        height: 100vh !important;
+      }
+    </style>
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+  </head>
+  <body class="bg-dark full-bg">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-lg-6 ">
+          <div class="card mt-5">
+            <div class="card-body">
+              <h4 class="card-title">Login</h4>
+              <form class="forms-sample" id="login-form">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Remember me <i class="input-helper"></i></label>
+                </div>
+                <button type="button" id="login-button" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-dark">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+
+
+
+
+
+
+
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="../../assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="../../assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="../../assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../../assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="../../assets/vendors/dropzone/dropzone.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+
+    <!-- auth -->
+    <script>
+      const baseUrl =  "http://b9eeffe266d3.ngrok.io";
+
+      $(`#login-button`).on('click', () => {
+        let data = new FormData();
+
+        // get from form
+        const form_data = $('#login-form').serializeArray();
+        
+        $.each(form_data, function (key, input) {
+            data.append(input.name, input.value);
+        });
+
+        $.ajax({
+          url: `${baseUrl}/auth/login`,
+          method: "post",
+          processData: false,
+          contentType: false,
+          data: data,
+          success: function (result) {
+            if(result.success == true){
+              localStorage.setItem("Usertoken", result.data); 
+              window.location = 'http://localhost/gitable/arsip-html/main/index.html';
+            }
+          },
+          error: function (e) {
+              console.log(e);
+          },
+          done: () => {  
+          }
+        });
+      })
+
+    </script>
+  </body>
+</html>
