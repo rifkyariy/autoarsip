@@ -21,8 +21,8 @@ $(document).ready(function(x){
                 if(data[i].owner == 'resource:org.example.User#'+email){
                     docs.push(data[i]);
                 }
-                showData();
             }
+            showData();
         }
     });
 });
