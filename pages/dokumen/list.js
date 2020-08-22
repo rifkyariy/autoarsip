@@ -17,6 +17,9 @@ $(document).ready(function(x){
         url: baseUrl+'/my-file',
         success: function(d){
             const data = JSON.parse(d.data)
+
+            console.log(data);
+            
             for(i = 0; i< data.length; i++){
                 if(data[i].owner == 'resource:org.example.User#'+email){
                     docs.push(data[i]);

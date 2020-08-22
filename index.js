@@ -32,6 +32,7 @@ const storePDF = (file) => {
         contentType: false,
         data: data,
         success: function (result) {
+            $(`.preview-panel`).show();
             updateProgress(100);
             $('#preview-pdf').attr('src',embedURL);
             generateForm(result.data);
