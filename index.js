@@ -145,9 +145,7 @@ $(`#update-detail-form`).on('click', () => {
             "token" : token
         },
         success: function (result) {
-            if(result.success == true){
-
-            }
+            window.location = './pages/dokumen/list.html'
         },
         error: function (e) {
             console.log(e);

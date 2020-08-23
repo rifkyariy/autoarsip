@@ -5,7 +5,7 @@ const docs = [];
 
 const showData = function(){
     for(i = 0; i < docs.length; i++){
-        let doc = "<div class='card document'><img data-pdf-thumbnail-file='"+baseUrl+docs[i].fileName+'/generate/original'+"' class='img-thumb card-img-top'/><div class='card-body'><a href='index.html?filename="+docs[i].fileName+"'>"+docs[i].fileName+"</a></div></div>";
+        let doc = "<div class='card document'><img data-pdf-thumbnail-file='"+baseUrl+docs[i].fileName+'/generate/original'+"' class='img-thumb card-img-top'/><div class='card-body'><a href='index.html?filename="+docs[i].fileName+"'>"+docs[i].fileTitle+"</a></div></div>";
         $('.documents').append(doc);
     }
 
