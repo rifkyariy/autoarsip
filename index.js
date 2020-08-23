@@ -94,7 +94,7 @@ const generateForm = (data) => {
                     Object.keys(elements).forEach(el => {
                         $(`#preview-table-body tr`).last().append(`
                             <td>
-                            <input type="text" class="form-control" name="${label}[${index}]" value="${elements[el]}">
+                                <input type="text" class="form-control" name="${label}[${index}]" value="${elements[el]}">
                             </td>
                         `);
 
@@ -104,12 +104,22 @@ const generateForm = (data) => {
 
 
         }else{
-            const formHtml =  `<div class="form-group">
-                                   <label for="${id}">${label}</label>
-                                   <input type="text" class="form-control" id="${id}" name="${key}" value="${val}">
-                               </div>`
+            if(label == 'filename'){
+                const formHtml =  `<div class="form-group">
+                                       <label for="${id}">${label}</label>
+                                       <input type="text" class="form-control" id="${id}" name="${key}" value="${val}" readonly>
+                                   </div>`
+
+                $(`#preview-form`).append(formHtml);
+            }else{
+                const formHtml =  `<div class="form-group">
+                                       <label for="${id}">${label}</label>
+                                       <input type="text" class="form-control" id="${id}" name="${key}" value="${val}">
+                                   </div>`
+
+                $(`#preview-form`).append(formHtml);
+            }
             
-            $(`#preview-form`).append(formHtml);
         }
         
       });
@@ -142,7 +152,8 @@ $(`#update-detail-form`).on('click', () => {
         method: "post",
         data: {
             "document_data" : JSON.stringify(data),
-            "token" : token
+            "token" : token,
+            "file_title" : formData.filetitle
         },
         success: function (result) {
             if(result.success == true){
