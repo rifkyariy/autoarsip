@@ -156,9 +156,7 @@ $(`#update-detail-form`).on('click', () => {
             "file_title" : formData.filetitle
         },
         success: function (result) {
-            if(result.success == true){
-
-            }
+            window.location = './pages/dokumen/list.html'
         },
         error: function (e) {
             console.log(e);
