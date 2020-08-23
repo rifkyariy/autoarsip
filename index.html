@@ -320,7 +320,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start" id="totalArchive">
-                          <h3 class="mb-0"></h3>
+                          <h3 class="mb-0">-</h3>
                         </div>
                       </div>
                       <div class="col-3">
@@ -368,7 +368,12 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Detail Arsip</h4>
-                    <form class="forms-sample" id="preview-form"></form>
+                    <form class="forms-sample" id="preview-form">
+                      <div class="form-group">
+                        <label for="datatitle">Judul Arsip</label>
+                        <input type="text" class="form-control" id="datatitle" name="filetitle" value="" required>
+                      </div>
+                    </form>
                   </div>
                   <div class="card-footer">
                     <button class="btn btn-primary mt-2 mr-2" id="update-detail-form">Submit</button>
@@ -426,6 +431,7 @@
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
     <!-- get data -->
