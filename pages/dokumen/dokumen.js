@@ -21,7 +21,7 @@ const getUrlParameter = function getUrlParameter(sParam) {
 const filename = getUrlParameter('filename');
 
 const setupFileOrigin = function(data){
-    $("#fileName").html(data.fileName);
+    $("#fileName").html(data.fileTitle);
 
     $("#preview-original").attr('src', baseUrl+filename+'/generate/original');
     $(".loading-container.original").hide();
