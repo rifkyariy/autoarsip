@@ -53,6 +53,7 @@ const verifyPDF = (file) => {
             updateProgress(100);
         },
         error: function (e) {
+            $(`.file-unverified`).toggle();
             console.log(e);
         },
         done: () => {  
